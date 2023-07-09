@@ -1,0 +1,47 @@
+back-end
+index.php (ok)
+login.php (ok)
+view.php (ok)
+
+front-end
+------------------------
+index.php 
+login.php
+view.php
+delete-customer.php
+appointment.php
+employee-login.php
+
+                        //----------------------------------------------------------------
+                        $query = "SELECT * 
+                        FROM customer c
+                        JOIN service s ON c.customer_id = s.customer_id
+                        JOIN vehicle v ON v.vehicle_id = s.vehicle_id
+                        JOIN employee e ON e.employee_id = s.employee_id
+                        JOIN receipt r ON r.receipt_id = s.receipt_id
+                        WHERE c.customer_id = :customerId";
+            
+                        $statement = oci_parse($connection, $query);
+                        oci_bind_by_name($statement, ':customerId', $customerId);
+                        oci_execute($statement);
+            
+                        if ($row = oci_fetch_assoc($statement)) {
+                            $_SESSION['customerId'] = $row['CUSTOMER_ID'];
+                            $_SESSION['customer_name'] = $row['CUSTOMER_NAME'];
+                            $_SESSION['email'] = $row['EMAIL'];
+                            $_SESSION['password'] = $row['PASSWORD'];
+                            $_SESSION['phone'] = $row['PHONE'];
+                            $_SESSION['model'] = $row['MODEL'];
+                            $_SESSION['colour'] = $row['COLOUR'];
+                            $_SESSION['plate'] = $row['PLATE'];
+                            $_SESSION['price'] = $row['PRICE'];
+                            $_SESSION['package'] = $row['PACKAGE'];
+                            $_SESSION['appointment_date'] = $row['APPOINTMENT_DATE'];
+                        
+                            header("Location: receipt.php");
+                            exit();
+                        } else {
+                            echo 'Error: Could not retrieve receipt information.';
+                        }
+            
+                        //----------------------------------------------------------------
