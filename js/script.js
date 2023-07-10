@@ -106,3 +106,63 @@ function myFunction3() {
     }       
   }
 }
+//----------------------------------------------------------------
+function addColumn() {
+  var container = document.getElementById("input-container");
+  var inputs = container.getElementsByTagName("input");
+
+  if (inputs.length < 5) {
+      var input = document.createElement("input");
+      input.type = "text";
+      input.name = "columns[]";
+      input.placeholder = "Column";
+      container.appendChild(input);
+  }
+}
+
+function removeColumn() {
+  var container = document.getElementById("input-container");
+  var inputs = container.getElementsByTagName("input");
+
+  if (inputs.length > 1) {
+      container.removeChild(inputs[inputs.length - 1]);
+  }
+}
+
+function addTableInput() {
+  var tableContainer = document.getElementById('table-container');
+  var tableInputs = tableContainer.getElementsByTagName('input');
+
+  if (tableInputs.length < 5) {
+      var tableInput = document.createElement('input');
+      tableInput.type = 'text';
+      tableInput.name = 'tables[]';
+      tableInput.placeholder = 'Table';
+      tableContainer.appendChild(tableInput);
+  }
+}
+
+function removeTableInput() {
+  var tableContainer = document.getElementById('table-container');
+  var tableInputs = tableContainer.getElementsByTagName('input');
+  if (tableInputs.length > 0) {
+      tableContainer.removeChild(tableInputs[tableInputs.length - 1]);
+  }
+}
+
+//----------------------------------------------------------------
+
+function validateForm() {
+  var columnInputs = document.getElementsByName('columns[]');
+  var numColumns = columnInputs.length;
+
+  // Check if any column inputs are empty
+  for (var i = 0; i < numColumns; i++) {
+      if (columnInputs[i].value === '') {
+          alert('Please fill in all column names.');
+          return false;
+      }
+  }
+
+  return true;
+}

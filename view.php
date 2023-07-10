@@ -48,6 +48,7 @@
 </head>
 <body>
     <h2>Customer List</h2>
+    <button><a href="adhoc-query.php">Adhoc Query</a></button>
     <form action="" class="export-forms">
       <button type="submit" onclick="window.print()" >Print Report</button>
     </form>

@@ -127,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['price'] = $price;
                         $_SESSION['package'] = $package;
                         $_SESSION['appointmentDate'] = $appointmentDate;
+                        $_SESSION['receiptId'] = $receiptId;
                         
                         // Redirect to receipt.php
                         header("Location: receipt.php");
