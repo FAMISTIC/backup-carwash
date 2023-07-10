@@ -49,10 +49,10 @@ if (isset($_SESSION['customerId'])) {
 
         // Redirect to the login page
         header("Location: index.php");
-        exit();
     }
 } else {
     // Redirect to the appointment form if the session variables are not set
+    header("Location: index.php");
 }
 ?>
 
@@ -69,37 +69,50 @@ if (isset($_SESSION['customerId'])) {
     <h1>Receipt</h1>
     <h2>Customer Information</h2>
 
-    <?php if (
-    isset($customerId) ) {?>
-    <p>Customer ID: <?php echo $customerId; ?></p>
-    <p>Name: <?php echo $customerName; ?></p>
-    <p>Email: <?php echo $email; ?></p>
+    <?php if (isset($customerId)) { ?>
+        <p>Customer ID: <?php echo $customerId; ?></p>
+        <p>Name: <?php echo $customerName; ?></p>
+        <p>Email: <?php echo $email; ?></p>
 
-    <h2>Vehicle Information</h2>
-    <p>Model: <?php echo $model; ?></p>
-    <p>Colour: <?php echo $colour; ?></p>
-    <p>Plate: <?php echo $plate; ?></p>
+        <h2>Vehicle Information</h2>
+        <p>Model: <?php echo $model; ?></p>
+        <p>Colour: <?php echo $colour; ?></p>
+        <p>Plate: <?php echo $plate; ?></p>
 
-    <h2>Service Information</h2>
-    <p>Price: <?php echo $price; ?></p>
-    <p>Package: <?php echo $package; ?></p>
-    <p>Appointment Date: <?php echo $appointmentDate; ?></p>
+        <h2>Service Information</h2>
+        <p>Price: <?php echo $price; ?></p>
+        <p>Package: <?php echo $package; ?></p>
+        <p>Appointment Date: <?php echo $appointmentDate; ?></p>
 
-    <h2>Payment Information</h2>
-    <p>Receipt ID: <?php echo $receiptId;?></p>
-    <!-- Add payment-related details here, such as payment method, transaction ID, etc. -->
-    <form action="" method="post">
-        <label for="bank_account">Bank Account</label><br>
-        <input type="number" name="receiptBankAcc" id="receiptBankAcc"/>
-        <br>
-        <input type="submit" value="pay">
-    </form>
-<?php } else { ?>
+        <h2>Payment Information</h2>
+        <p>Receipt ID: <?php echo $receiptId;?></p>
+        <!-- Add payment-related details here, such as payment method, transaction ID, etc. -->
+        <form action="" method="post">
+            <label for="bank_account">Bank Account</label><br>
+            <input type="number" name="receiptBankAcc" id="receiptBankAcc"/>
+            <br>
+            <input type="submit" value="pay">
+        </form>
+    <?php } else { ?>
         <p>You are not logged in.</p>
         <!-- Login button -->
         <a href="login.php">Login</a>
         <a href="appointment.php">Register And Create Appointment</a>
     <?php } ?>
+
+    <!-- Popup message -->
+    <div id="popup" style="display: none;">
+        <h3>Payment Successful!</h3>
+    </div>
+
     <?php include 'includes/footer.php'; ?>
+
+    <script>
+        // Show the popup message
+        window.onload = function() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        };
+    </script>
 </body>
 </html>

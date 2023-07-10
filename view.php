@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Customer List</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
 * {
   box-sizing: border-box;
@@ -38,38 +39,28 @@
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
-.export-forms {
-        display: inline;
-        margin-right: 10px;
-    }
+
+
 </style>
 <script src="js/script.js">
 </script>
 </head>
 <body>
     <h2>Customer List</h2>
-    <button><a href="adhoc-query.php">Adhoc Query</a></button>
-    <form action="" class="export-forms">
-      <button type="submit" onclick="window.print()" >Print Report</button>
-    </form>
-    <form method="post" action="export-excel.php" class="export-forms">
-        <button type="submit" name="export">Export to Excel</button>
-    </form>
-    <form method="post" action="export-xml.php" class="export-forms">
-        <button type="submit" name="export">Export to XML</button>
-    </form>
-    <form method="post" action="export-text.php" class="export-forms">
-        <button type="submit" name="export">Export to Text</button>
-    </form>
-    <form method="post" action="export-csv.php" class="export-forms">
-        <button type="submit" name="export">Export to CSV</button>
-    </form>
-    <form method="post" action="export-json.php" class="export-forms">
-        <button type="submit" name="export">Export to JSON</button>
-    </form>
-    <form method="post" action="export-word.php" class="export-forms">
-        <button type="submit" name="export">Export to Word</button>
-    </form>
+    <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Function</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="adhoc-query.php">Adhoc Query</a></li>
+      <li><form><button type="submit" onclick="window.print()" class="dropdown-item">Print Report</button></form></li>
+      <li><form method="post" action="export-excel.php"><button type="submit" name="export"  class="dropdown-item">Export to Excel</button></form></li>
+      <li><form method="post" action="export-xml.php"><button class="dropdown-item">Export to XML</button></form></li>
+      <li><form method="post" action="export-text.php"><button type="submit" name="export" class="dropdown-item">Export to Text</button></form></li>
+      <li><form method="post" action="export-csv.php"><button type="submit" name="export" class="dropdown-item">Export to CSV</button></form></li>
+      <li><form method="post" action="export-json.php"><button type="submit" name="export" class="dropdown-item">Export to JSON</button></form></li>
+      <li><form method="post" action="export-word.php"><button type="submit" name="export" class="dropdown-item">Export to Word</button></form></li>
+    </ul>
+  </div>
+ 
     <?php
     // Include your Oracle connection code here
     include_once 'includes/db_connection.php';

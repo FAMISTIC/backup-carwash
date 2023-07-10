@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate the username and password
     // You can implement your own validation logic here
 
-    // Query to check if the provided email and password are correct
+    // Query to check if the provided employee name and password are correct
     $query = "SELECT * FROM employee WHERE employee_name = :employee_name AND employee_password = :employee_password";
     $stmt = oci_parse($connection, $query);
     oci_bind_by_name($stmt, ':employee_name', $employee_name);
@@ -23,11 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($row = oci_fetch_assoc($stmt)) {
         // Login successful
         // Store user information in session variables
-        $_SESSION['employee_name'] = $row['employee_name'];
-        
-        // Redirect to the home page or a dashboard
-        header("Location: view.php");
-        exit();
+        $_SESSION['employee_name'] = $row['EMPLOYEE_NAME'];
+        $_SESSION['employee_role'] = $row['EMPLOYEE_ROLE']; // Assuming EMPLOYEE_ROLE column exists in the employee table
+
+        // Redirect based on the role
+        if ($_SESSION['employee_role'] == 'staff') {
+            header("Location: staff-page.php");
+            exit();
+        } elseif ($_SESSION['employee_role'] == 'manager') {
+            header("Location: manager-page.php");
+            exit();
+        } else {
+            // Unknown role
+            echo 'Unknown role.';
+        }
     } else {
         // Login failed
         echo 'Invalid username or password.';

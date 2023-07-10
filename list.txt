@@ -13,6 +13,19 @@ delete-customer.php
 appointment.php
 employee-login.php
 
+FLOW (yes -registered) (no- not registed)
+------Customer ------
+1.index.php(no)
+2.appointment.php(no)
+3.receipt.php(yes)
+4.index.php(yes)(if user wants to logout, head to the index.php)
+5.login.php(no)(when logged out)
+6.index.php(yes)(when logged in)
+----------------------
+-------Admin----------
+1.employee-login.php(no)
+2.view.php(yes)
+3.
                         //----------------------------------------------------------------
                         $query = "SELECT * 
                         FROM customer c
