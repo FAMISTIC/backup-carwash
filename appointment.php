@@ -195,10 +195,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <h2>Service Information</h2>
         <label for="price">Price:</label>
-        <input type="number" name="price" id="price" placeholder="100" readonly>
+        <input type="number" name="price" id="price" placeholder="100" readonly class="form-control form-control-lg">
 
         <label for="package">Package:</label>
-        <select name="package" id="package" onchange="updatePrice()">
+        <select name="package" id="package" onchange="updatePrice()" class="form-control form-control-lg">
             <option value="Basic">Basic</option>
             <option value="Premium">Premium</option>
             <option value="Deluxe">Deluxe</option>
@@ -206,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </select>
 
         <label for="appointment_date">Appointment Date:</label>
-        <input type="date" name="appointment_date" id="appointment_date" value="<?php echo $appointmentDate; ?>" required>
+        <input type="date" name="appointment_date" id="appointment_date" value="<?php echo $appointmentDate; ?>" required class="form-control form-control-lg">
 
         <input type="submit" value="Submit">
     </form>

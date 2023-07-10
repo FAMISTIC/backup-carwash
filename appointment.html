@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Appointment Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="style.css" rel="stylesheet">
+</head>
+<style>
+    body{background-color: wheat;}
+</style>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<div class="container-fluid">
+	<a class="navbar-brand" href="index.html"><img src="img/logo-carwash.png"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item-active">
+				<a class="nav-link" href="index.html">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Service</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Price</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">About</a>
+			</li>
+            <div class="btn-container-user" style="margin-right: 70px;">
+				<div class="dropdown">
+				  <button class="btn dropdown-toggle nav-box" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> Arif</button>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<li><a class="dropdown-item" href="#">Logout</a></li>
+				  </ul>
+				</div>
+			  </div>
+		</ul>
+	</div>
+</div> 
+</nav>
+<body class="vh-100">
+	<div class="container-fluid h-custom">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+		  
+		  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+			<form action="post">
+			  <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+				<h1><br><b>Appointment Form</b></h1>
+			  </div>
+			  <br><br>
+              <h2>Customer Information</h2><br>
+			  <!-- Customer Name input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="customer_name">Customer Name:</label>
+				<input type="text" name="customer_name" id="customer_name" class="form-control form-control-lg"
+				  placeholder="Enter a Name" required/>
+			  </div>
+
+              <!-- Email input -->
+			  <div class="form-outline mb-3">
+				<label class="form-label" for="email">Email:</label>
+				<input type="email" name="email" id="email" class="form-control form-control-lg"
+				  placeholder="Enter an Email" required/>	
+			  </div>
+
+              <!-- Password input -->
+			  <div class="form-outline mb-3">
+				<label class="form-label" for="password">Password:</label>
+				<input type="password" name="password" id="password" class="form-control form-control-lg"
+				  placeholder="Enter a Password" required/>	
+			  </div>
+
+			  <!-- Phone input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="phone">Phone Number:</label>
+				<input type="text" name="phone" id="phone" class="form-control form-control-lg"
+				  placeholder="Enter a Phone Number" required/>
+			  </div><br>
+
+              <h2>Vehicle Information</h2><br>
+			  <!-- Vehicle Model input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="model">Model:</label>
+				<input type="text" name="model" id="model" class="form-control form-control-lg"
+				  placeholder="Enter a Model" required/>
+			  </div>
+	
+			  <!-- Vehicle Colour input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="colour">Colour:</label>
+				<input type="text" name="colour" id="colour" class="form-control form-control-lg"
+				  placeholder="Enter a Colour" required/>
+			  </div>
+
+			  <!-- Vehicle plate input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="plate">Plate Number:</label>
+				<input type="text" name="plate" id="plate" class="form-control form-control-lg"
+				  placeholder="Enter a Plate Number" required/>
+			  </div><br>
+              <h2>Service Information</h2><br>
+			  <!-- Plate Number input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="price">Price:</label>
+				<input type="number" name="price" id="price" class="form-control form-control-lg"
+				  placeholder="100" required/>	
+			  </div>
+
+              <!-- Package Dropdown -->
+              <div class="form-outline mb-4">
+				<label for="package">Package:</label>
+                <select name="package" id="package" class="form-control form-control-lg">
+                    <option value="Basic">Basic</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="Supreme">Supreme</option>
+                </select>	
+            </div>
+			  <!-- Appointment Date -->
+              <div class="form-outline mb-4">
+			  <label for="appointment_date">Appointment Date:</label>
+              <input type="date" name="appointment_date" id="appointment_date"  required class="form-control form-control-lg">
+              </div>
+	
+			  <div class="text-center text-lg-start mt-4 pt-2">
+				<button type="submit" class="btn btn-primary btn-lg"
+				  style="padding-left: 2.5rem; padding-right: 2.5rem;">Make Appointment</button>
+			  </div><br><br>
+	
+			</form>
+		  </div>
+		  
+		</div>
+	  </div>
+	<!--<form method="post" action="register.php">
+		First name:<br>
+		<input type="text" name="customer_name">
+		<br>
+		Phone:<br>
+		<input type="number" name="phone">
+		<br>
+		Password:<br>
+		<input type="password" name="password">
+		<br>
+		Email Id:<br>
+		<input type="email" name="email">
+		<br><br>
+		<input type="submit" name="save" value="submit">
+	</form>-->
+<footer></footer>
+	<div
+    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <!-- Copyright -->
+    <div class="text-black mb-3 mb-md-0">
+      Copyright © 2020. All rights reserved.
+    </div>
+
+    <!-- Right -->
+    <div>
+      <a href="https://web.facebook.com" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com/" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.instagram.com/" class="text-white me-4">
+        <i class="fab fa-instagram"></i>
+      </a>
+      </div>
+  </div>
+</footer>
+  </body>
+</html>
