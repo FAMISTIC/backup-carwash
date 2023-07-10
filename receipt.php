@@ -40,15 +40,23 @@ if (isset($_SESSION['customerId'])) {
         $PayStatement = oci_parse($connection, $payment);
         oci_bind_by_name($PayStatement, ':receiptBankAcc', $receiptBankAcc);
         oci_bind_by_name($PayStatement, ':receiptId', $receiptId);
+        oci_execute($PayStatement);
 
-        if (oci_execute($PayStatement)) {
-            echo "<script type='text/javascript'>alert('Payment Successful!');</script>";
-        } else {
-            echo "<script type='text/javascript'>alert('Payment Failed!');</script>";
-        }
+        $_SESSION['customer_id'] = $customerId;
+        $_SESSION['customer_name'] = $customerName;
+        $_SESSION['email'] = $email;
+        $_SESSION['model'] = $model;
+        $_SESSION['colour'] = $colour;
+        $_SESSION['plate'] = $plate;
+        $_SESSION['price'] = $price;
+        $_SESSION['package'] = $package;
+        $_SESSION['appointmentDate'] = $appointmentDate;
+        $_SESSION['receiptId'] = $receiptId;
 
         // Redirect to the login page
         header("Location: index.php");
+        exit();
+
     }
 } else {
     // Redirect to the appointment form if the session variables are not set
@@ -100,19 +108,9 @@ if (isset($_SESSION['customerId'])) {
         <a href="appointment.php">Register And Create Appointment</a>
     <?php } ?>
 
-    <!-- Popup message -->
-    <div id="popup" style="display: none;">
-        <h3>Payment Successful!</h3>
-    </div>
+
 
     <?php include 'includes/footer.php'; ?>
 
-    <script>
-        // Show the popup message
-        window.onload = function() {
-            var popup = document.getElementById("popup");
-            popup.style.display = "block";
-        };
-    </script>
 </body>
 </html>
