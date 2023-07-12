@@ -152,65 +152,153 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Appointment Form</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Appointment Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.min.css" />
+	<link href="style.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
-<body>
-    <?php include 'includes/header.php'; ?>
+<style>
+    body{background-color: wheat;}
+</style>
 
-    <h1>Appointment Form</h1>
+<!-- Navigation -->
 
-    <?php if ($error) : ?>
-        <p class="error"><?php echo $error; ?></p>
-    <?php elseif ($successMessage) : ?>
-        <p class="success"><?php echo $successMessage; ?></p>
-    <?php endif; ?>
+<body class="vh-100">
+	<div class="container-fluid h-custom">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <h1>Registration and Appointment Form</h1> 
+  </div>
+		  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+			<form method="post" name="form1" class="was-validated">
 
-    <form method="POST" action="">
-        <h2>Customer Information</h2>
-        <label for="customer_name">Customer Name:</label>
-        <input type="text" name="customer_name" id="customer_name" value="<?php echo $customerName; ?>" required>
+              <?php if ($error) : ?>
+                <p class="error"><?php echo $error; ?></p>
+              <?php elseif ($successMessage) : ?>
+                <p class="success"><?php echo $successMessage; ?></p>
+              <?php endif; ?>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" value="<?php echo $email; ?>" required>
+			  <br><br>
+              <h2>Customer Information</h2><br>
+			  <!-- Customer Name input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="customer_name">Customer Name:</label>
+				<input type="text" name="customer_name" id="customer_name" class="form-control form-control-lg"
+				  placeholder="Enter a Name" required/>
+          <div class="invalid-feedback">
+            Please enter Name
+          </div>
+			  </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" value="<?php echo $password; ?>" required>
+              <!-- Email input -->
+			  <div class="form-outline mb-3">
+				<label class="form-label" for="email">Email:</label>
+				<input type="email" name="email" id="email" class="form-control form-control-lg has-validation"
+				  placeholder="Enter an Email" required/>	
+          <div class="invalid-feedback">
+            Please enter email
+          </div>
+			  </div>
 
-        <label for="phone">Phone:</label>
-        <input type="text" name="phone" id="phone" value="<?php echo $phone; ?>" required>
+              <!-- Password input -->
+			  <div class="form-outline mb-3">
+				<label class="form-label" for="password">Password:</label>
+				<input type="password" name="password" id="password" class="form-control form-control-lg has-validation"
+				  placeholder="Enter a Password" required/>	
+          <div class="invalid-feedback">
+            Please enter password
+          </div>
+			  </div>
 
-        <h2>Vehicle Information</h2>
-        <label for="model">Model:</label>
-        <input type="text" name="model" id="model" value="<?php echo $model; ?>" required>
+			  <!-- Phone input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="phone">Phone Number:</label>
+				<input type="tel" name="phone" id="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control form-control-lg has-validation"
+				  placeholder="Enter a Phone Number"required/>
+          <div class="invalid-feedback">
+            Please enter phone number
+          </div>
+			  </div><br>
 
-        <label for="colour">Colour:</label>
-        <input type="text" name="colour" id="colour" value="<?php echo $colour; ?>" required>
+              <h2>Vehicle Information</h2><br>
+			  <!-- Vehicle Model input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="model">Model:</label>
+				<input type="text" name="model" id="model" class="form-control form-control-lg has-validation"
+				  placeholder="Enter a Model" value="<?php echo $model; ?>" required/>
+          <div class="invalid-feedback">
+            Please enter email
+          </div>
+			  </div>
+	
+			  <!-- Vehicle Colour input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="colour">Colour:</label>
+				<input type="color" name="colour" id="colour" class="form-control form-control-lg is-valid form-control-color has-validation"
+				  placeholder="Enter a Colour" value="<?php echo $colour; ?>" required/>
+          <div class="invalid-feedback">
+            Please enter colour
+          </div>
+			  </div>
 
-        <label for="plate">Plate:</label>
-        <input type="text" name="plate" id="plate" value="<?php echo $plate; ?>" required>
+			  <!-- Vehicle plate input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="plate">Plate</label>
+				<input type="text" name="plate" id="plate" class="form-control form-control-lg has-validation"
+				  placeholder="Enter a Plate Number" value="<?php echo $plate; ?>" required/>
+          <div id="plate" class="invalid-feedback">
+            Please enter plate number.
+         </div>
+			  </div><br>
+              <h2>Service Information</h2><br>
+			  <!-- Plate Number input -->
+			  <div class="form-outline mb-4">
+				<label class="form-label" for="price">Price:</label>
+				<input type="number" name="price" id="price" class="form-control form-control-lg has-validation"
+				  placeholder="100" value="100" required readonly/>	
+			  </div>
 
-        <h2>Service Information</h2>
-        <label for="price">Price:</label>
-        <input type="number" name="price" id="price" placeholder="100" readonly>
-
-        <label for="package">Package:</label>
-        <select name="package" id="package" onchange="updatePrice()">
-            <option value="Basic">Basic</option>
-            <option value="Premium">Premium</option>
-            <option value="Deluxe">Deluxe</option>
-            <option value="Supreme">Supreme</option>
-        </select>
-
-        <label for="appointment_date">Appointment Date:</label>
-        <input type="date" name="appointment_date" id="appointment_date" value="<?php echo $appointmentDate; ?>" required>
-
-        <input type="submit" value="Submit">
-    </form>
-
-    <?php include 'includes/footer.php'; ?>
-</body>
+              <!-- Package Dropdown -->
+        <div class="form-outline mb-4">
+				<label for="package">Package:</label>
+                <select name="package" id="package" onchange="updatePrice()" class="form-control form-control-lg has-validation">
+                    <option value="Basic">Basic</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="Supreme">Supreme</option>
+                </select>	
+            </div>
+			  <!-- Appointment Date -->
+        <div class="form-group form-outline mb-4">
+			  <label for="datepicker1">Appointment Date:</label>
+              <input type="date" placeholder="MM/DD/YYYY" name="appointment_date" id="datepicker1" class="form-control form-control-lg date has-validation" required>
+              <div class="invalid-feedback">
+                Please enter date
+              </div>
+        </div>
+	
+			  <div class="text-center text-lg-start mt-4 pt-2">
+				<button type="submit" class="btn btn-primary btn-lg"
+				  style="padding-left: 2.5rem; padding-right: 2.5rem;">Make Appointment</button>
+			  </div><br><br>
+	
+			</form>
+		  </div>
+		  
+		</div>
+	  </div>
+ <?php include 'includes/footer.php' ?>
+  </body>
 </html>

@@ -14,6 +14,7 @@ if (isset($_POST['customer_id'])) {
 
     if (oci_execute($stmt)) {
         echo 'Customer deleted successfully.';
+        echo '<button><a href="manager-page.php">Back to Admin Page</a></button>';
     } else {
         echo 'Failed to delete customer.';
     }

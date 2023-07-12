@@ -20,7 +20,7 @@ if (isset($_SESSION['employee_name'])) {
     }
 } else {
     // Admin is not logged in, redirect to the login page
-    header("Location: index.php");
+    header("Location: employee-login.php");
 
 }
 ?>
@@ -116,8 +116,7 @@ if (isset($_SESSION['employee_name'])) {
         <?php } else { ?>
         <p>You are not logged in.</p>
         <!-- Login button -->
-        <a href="login.php">Login</a>
-        <a href="appointment.php">Register And Create Appointment</a>
+        <a href="employee-login.php">Login</a>
     <?php } ?>
     
 

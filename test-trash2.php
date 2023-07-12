@@ -39,7 +39,7 @@ if (isset($_SESSION['customer_name']) && isset($_SESSION['email'])) {
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<link href="style.css" rel="stylesheet">
 </head>
-<body class="vh-100">
+<body>
 
 <?php if(isset($customer_name) && isset($email)){ ?>
 <!-- Navigation -->
@@ -53,6 +53,9 @@ if (isset($_SESSION['customer_name']) && isset($_SESSION['email'])) {
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item-active">
 				<a class="nav-link" href="index.php">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Service</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">About</a>
@@ -76,41 +79,36 @@ if (isset($_SESSION['customer_name']) && isset($_SESSION['email'])) {
 </div> 
 </nav>
 <!-- nav -->
-<body>
-	<div class="container-fluid h-custom">
-		<div class="row d-flex justify-content-center align-items-center h-100">
-	<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-	<form method="post" name="form1" class="was-validated">
-
-	<div class="form-outline mb-4">
-				<label class="form-label" for="customer_name">Customer Name:</label>
-				<input type="text" name="customer_name" id="customer_name" class="form-control form-control-lg"
-				  placeholder="Enter a Name" value="<?php echo $customer_name; ?>" readonly/>
-	</div>
-	<div class="form-outline mb-4">
-				<label class="form-label" for="customer_name">Email:</label>
-				<input type="text" name="customer_name" id="customer_name" class="form-control form-control-lg"
-				  placeholder="Enter a Name" value="<?php echo $email; ?>" readonly/>
-	</div>
-	<div class="form-outline mb-4">
-				<label class="form-label" for="customer_name">Vehicle Model:</label>
-				<input type="text" name="customer_name" id="customer_name" class="form-control form-control-lg"
-				  placeholder="Enter a Name" value="<?php echo $model; ?>" readonly/>
-	</div>
-	<div class="form-outline mb-4">
-				<label class="form-label" for="customer_name">Vehicle Plate:</label>
-				<input type="text" name="customer_name" id="customer_name" class="form-control form-control-lg"
-				  placeholder="Enter a Name" value="<?php echo $plate; ?>" readonly/>
-	</div>
-	<div class="form-outline mb-4">
-				<label class="form-label" for="customer_name">Vehicle Colour:</label>
-				<input type="text" name="customer_name" id="customer_name" class="form-control form-control-lg"
-				  placeholder="Enter a Name" value="<?php echo $colour; ?>" readonly/>
-	</div>
-
-</div>
-
-
+<div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $customer_name; ?>" >
+    </div>
+  </div>
+  <div class="mb-3 row">
+  <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $email; ?>">
+    </div>
+  </div>
+  <div class="mb-3 row">
+  <label for="staticEmail" class="col-sm-2 col-form-label">Model</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $model; ?>">
+    </div>
+  </div>
+  <div class="mb-3 row">
+  <label for="staticEmail" class="col-sm-2 col-form-label">Plate</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $plate; ?>">
+    </div>
+  </div>
+  <div class="mb-3 row">
+  <label for="staticEmail" class="col-sm-2 col-form-label">Colour</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $colour; ?>">
+    </div>
+  </div>
 
 <?php } else {?>
 <!-- Navigation -->
@@ -126,12 +124,13 @@ if (isset($_SESSION['customer_name']) && isset($_SESSION['email'])) {
 				<a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link" href="#">Service</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="#">About</a>
 			</li>
 			<li class="nav-item">
-                    <div class="btn-container-user" style="margin-right: 70px;">
-                        	<a href="login.php"><button class="btn nav-box" type="button">Login</button></a>
-                    </div>
+				<a href="login.php"><button type="button" class="btn btn-outline-secondary btn-lg">Login</button></a>		
 			</li>
 		</ul>
 	</div>

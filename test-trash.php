@@ -188,12 +188,15 @@ $(document).ready(function(){
 				<a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link" href="#">Service</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="#">About</a>
 			</li>
 			<li class="nav-item">
                     <div class="btn-container-user" style="margin-right: 70px;">
                         <div class="dropdown">
-                        <button class="btn dropdown-toggle nav-box" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $customerName; ?></button>
+                        <button class="btn dropdown-toggle nav-box" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $customer_name; ?></button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>
                                 <form method="post">
@@ -322,6 +325,9 @@ $(document).ready(function(){
 				<a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link" href="#">Service</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="#">About</a>
 			</li>
 			<li class="nav-item">
@@ -335,6 +341,6 @@ $(document).ready(function(){
 </nav>
 <?php } ?>
 <!--- Footer -->
-<?php include 'includes/footer.php';?>
+<?php include 'includes/db_connection.php';?>
 </body>
 </html>
