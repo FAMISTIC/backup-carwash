@@ -116,6 +116,7 @@ function addColumn() {
       input.type = "text";
       input.name = "columns[]";
       input.placeholder = "Column";
+      input.setAttribute("class", "form-control"); // Set the class attribute instead
       container.appendChild(input);
   }
 }
@@ -184,3 +185,7 @@ var today = year + "-" + month + "-" + day;
 document.getElementById('datepicker1').value = today;
 
 //----------------------------------------------------------------
+
+function myComment() {
+  alert("Comments has been submitted");
+}

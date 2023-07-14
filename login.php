@@ -29,11 +29,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($row = oci_fetch_assoc($stmt)) {
         // Login successful
         // Store user information in session variables
+
+        $_SESSION['customer_id'] = $row['CUSTOMER_ID'];
         $_SESSION['customer_name'] = $row['CUSTOMER_NAME'];
         $_SESSION['email'] = $row['EMAIL'];
         $_SESSION['model'] = $row['MODEL'];
         $_SESSION['plate'] = $row['PLATE'];
-        $_SESSION['colour'] = $row['COLOUR'];        
+        $_SESSION['colour'] = $row['COLOUR'];    
+        
+        $customer_id = $row['CUSTOMER_ID'];
+        
+        $AddressQuery = "SELECT * FROM address WHERE customer_id =  :customer_id";
+        $AddressStatement = oci_parse($connection, $AddressQuery);
+        oci_bind_by_name($AddressStatement, ':customer_id', $customer_id);
+        oci_execute($AddressStatement);
+
+        if ($data = oci_fetch_assoc($AddressStatement)){
+            $_SESSION['address'] = $data['ADDRESS'];
+            $_SESSION['resident_status'] = $data['RESIDENT_STATUS'];
+        } else {
+
+        }
+
         // Redirect to the home page or a dashboard
         header("Location: index.php");
         exit();
@@ -74,18 +91,25 @@ oci_close($connection);
         <form action="" method="POST">
             <div class="form-outline mb-4">
                         <label class="form-label" for="email">Email:</label>
-                        <input type="text" id="email" name="email" required><br>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required><br>
 
             </div>
             <div class="form-outline mb-4">
-                        <label class="form-label" for="email">Email:</label>
-                        <input type="text" id="email" name="email" required><br>
+                        <label class="form-label" for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control form-control-lg" required><br>
 
             </div>
 
-            <input type="submit" value="Login">
+            <div class="text-center text-lg-start mt-4 pt-2">
+				<button type="submit" class="btn btn-primary btn-lg"
+				  style="padding-left: 2.5rem; padding-right: 2.5rem;">LOGIN</button>
+			  </div>
+              <br>
+              <br>
+              <br>
         </form>
     </div>
+        </div>
     <?php include 'includes/footer.php'; ?>
 
 </body>

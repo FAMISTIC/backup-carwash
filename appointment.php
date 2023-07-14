@@ -114,7 +114,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     oci_bind_by_name($insertServiceStatement, ':employeeId', $employeeId);
                     oci_bind_by_name($insertServiceStatement, ':receiptId', $receiptId);
 
-                    if (oci_execute($insertServiceStatement)) {
+                    $InsertAddress = "INSERT INTO address(customer_id) VALUES(:customer_id)";
+                    $InsertAddressStatement = oci_parse($connection, $InsertAddress);
+                    oci_bind_by_name($InsertAddressStatement, ':customer_id', $customerId);
+
+                    if (oci_execute($insertServiceStatement) && oci_execute($InsertAddressStatement)) {
                         $successMessage = 'Appointment form submitted successfully.';
                         
                         // Set the session variables for receipt.php

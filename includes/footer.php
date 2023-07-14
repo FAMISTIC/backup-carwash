@@ -1,5 +1,4 @@
 <footer>
-<div>
 	<!-- Footer -->
 	<div
 			class="text-center text-lg-start text-white"
@@ -117,8 +116,8 @@
 		   style="background-color: rgba(0, 0, 0, 0.2)"
 		   >
 		© 2020 Copyright:
-		<a class="text-white" href="#"
-		   >Heisenberg Car Wash</a
+		<a class="text-white" href="https://mdbootstrap.com/"
+		   >MDBootstrap.com</a
 		  >
 	  </div>
 	  <!-- Copyright -->

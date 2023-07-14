@@ -85,6 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="js/script.js"></script>
     <script>
         // Function to display error message
@@ -100,11 +104,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="table" id="table" placeholder="Table" required>
         </div>
     
-        <div id="input-container">
+        <div id="input-container" class="mb-3">
             <label for="columns">Columns:</label>
-            <input type="text" name="columns[]" placeholder="Column" required>
-            <input type="text" name="columns[]" placeholder="Column">
-            <input type="text" name="columns[]" placeholder="Column">
+            <input type="text" class="form-control" name="columns[]" placeholder="Column" required>
+            <input type="text" class="form-control" name="columns[]" placeholder="Column">
+            <input type="text" class="form-control" name="columns[]" placeholder="Column">
         </div>
 
         <button type="button" onclick="addColumn()">+ Column</button>

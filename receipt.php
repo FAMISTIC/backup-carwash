@@ -77,7 +77,6 @@ if (isset($_SESSION['customerId'])) {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-<link href="style.css" rel="stylesheet">
 <style>
 body {
     color: #404E67;
@@ -176,38 +175,6 @@ $(document).ready(function(){
 
 <?php if (isset($customerId)) { ?>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-<div class="container-fluid">
-	<a class="navbar-brand" href="#"><img src="img/logo-carwash.png"></a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarResponsive">
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item-active">
-				<a class="nav-link" href="index.php">Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">About</a>
-			</li>
-			<li class="nav-item">
-                    <div class="btn-container-user" style="margin-right: 70px;">
-                        <div class="dropdown">
-                        <button class="btn dropdown-toggle nav-box" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $customerName; ?></button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li>
-                                <form method="post">
-                                    <a><button type="submit" name="logout" class="btn btn-outline-secondary btn-lg">Logout</button></a>		
-                                </form>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
-			</li>
-		</ul>
-	</div>
-</div> 
-</nav>
 
 <div class="d-flex flex-row align-items-center justify-content-center">
     <h1><br>Receipt Page</h1>
