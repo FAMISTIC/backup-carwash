@@ -13,7 +13,7 @@
 			<!-- Grid column -->
 			<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
 			  <h6 class="text-uppercase mb-4 font-weight-bold">
-				Company name
+				Heseinberg Car Wash
 			  </h6>
 			  <p>
 				Here you can use rows and columns to organize your footer
@@ -48,8 +48,8 @@
 			<!-- Grid column -->
 			<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
 			  <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-			  <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-			  <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+			  <p><i class="fas fa-home mr-3"></i> Seksyen 30, NY 10012, Shah Alam</p>
+			  <p><i class="fas fa-envelope mr-3"></i> CarWashSystem@gmail.com</p>
 			  <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
 			</div>
 			<!-- Grid column -->
@@ -117,7 +117,7 @@
 		   >
 		© 2020 Copyright:
 		<a class="text-white" href="https://mdbootstrap.com/"
-		   >MDBootstrap.com</a
+		   >HeseinbergCarWash.com</a
 		  >
 	  </div>
 	  <!-- Copyright -->

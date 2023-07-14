@@ -110,6 +110,7 @@ oci_close($connection);
         </form>
     </div>
         </div>
+</div>
     <?php include 'includes/footer.php'; ?>
 
 </body>

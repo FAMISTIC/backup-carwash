@@ -116,10 +116,11 @@ if (isset($_SESSION['customer_name']) && isset($_SESSION['email'])) {
             </div>
         </div>
     </nav>
-    <h1>Address</h1>
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <h1>Address</h1>
+
                 <form method="post" name="form1" class="was-validated">
                     <div class="form-outline mb-4">
                         <input type="hidden" name="customer_id" id="customer_id" class="form-control form-control-lg"
