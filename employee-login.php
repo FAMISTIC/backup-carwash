@@ -49,18 +49,47 @@ oci_close($connection);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Login</title>
-</head>
+<title>LEmployee Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.min.css" />
+	<link href="style.css" rel="stylesheet">
+    <script src="js/script.js"></script></head>
 <body>
-    <h2>Employee Login</h2>
-    <form action="employee-login.php" method="POST">
-        <label for="username">USERNAME:</label>
-        <input type="text" id="employee_name" name="employee_name" required><br>
+<div class="container-fluid h-custom">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <h1>Employee Login</h1> 
+    </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
-        <label for="password">PASSWORD:</label>
-        <input type="password" id="employee_password" name="employee_password" required><br>
+                <form action="employee-login.php" method="POST">
+                <div class="form-outline mb-4">
 
-        <input type="submit" value="Login">
-    </form>
+                    <label for="username" class="form-label">USERNAME:</label>
+                    <input type="text" id="employee_name" name="employee_name" class="form-control form-control-lg" required><br>
+                </div>
+                <div class="form-outline mb-4">
+                    <label for="password" class="form-label">PASSWORD:</label>
+                    <input type="password" id="employee_password"  name="employee_password" class="form-control form-control-lg" required><br>
+                </div>
+                <div class="text-center text-lg-start mt-4 pt-2">
+				<button type="submit" class="btn btn-primary btn-lg"
+				  style="padding-left: 2.5rem; padding-right: 2.5rem;">LOGIN</button>
+			     </div>
+                    <br>
+                    <br>
+                    <br>
+                </form>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

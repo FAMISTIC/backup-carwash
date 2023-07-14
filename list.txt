@@ -24,8 +24,9 @@ FLOW (yes -registered) (no- not registed)
 ----------------------
 -------Admin----------
 1.employee-login.php(no)
-2.view.php(yes)
-3.
+2.IF(role=manager)->manager-page.php(yes)
+3.ELSE IF(role=staff)->staff-page.php(yes)
+
                         //----------------------------------------------------------------
                         $query = "SELECT * 
                         FROM customer c
@@ -59,3 +60,39 @@ FLOW (yes -registered) (no- not registed)
                         }
             
                         //----------------------------------------------------------------
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+		$address = $_POST['address'];
+		$resident_status = $_POST['resident_status'];
+
+        $AddressQuery = "INSERT INTO address(customer_id, address, resident_status) VALUES (:customer_id, :address, :resident_status)";
+        $AddressStatement = oci_parse($connection, $AddressQuery);
+        oci_bind_by_name($AddressStatement, ':customer_id', $customer_id);
+        oci_bind_by_name($AddressStatement, ':address', $address);
+		oci_bind_by_name($AddressStatement, ':resident_status', $resident_status);
+
+        if(oci_execute($AddressStatement)){
+			echo "<script>alert('Address submitted successfully');</script>";
+
+		}else{
+			echo "<script>alert('Address submitted failed');</script>";
+			$AddressUpdate = "UPDATE address 
+							  SET address=:address,
+							      resident_status=:resident_status 
+								  WHERE address LIKE :customer_id;"; 
+			$Update = oci_parse($connection, $AddressUpdate);
+			oci_bind_by_name($Update, ':address', $address);
+			oci_bind_by_name($Update, ':resident_status', $resident);
+			oci_bind_by_name($Update, ':customer_id', $customer_id);
+
+			if (oci_execute($Update)){
+				echo "<script>alert('Address updated successfully');</script>";
+			}else{
+				echo "<script>alert('Address update failed ');</script>";
+			}
+							 
+
+
+		}
+
+    }

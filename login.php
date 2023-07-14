@@ -29,11 +29,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($row = oci_fetch_assoc($stmt)) {
         // Login successful
         // Store user information in session variables
+
+        $_SESSION['customer_id'] = $row['CUSTOMER_ID'];
         $_SESSION['customer_name'] = $row['CUSTOMER_NAME'];
         $_SESSION['email'] = $row['EMAIL'];
         $_SESSION['model'] = $row['MODEL'];
         $_SESSION['plate'] = $row['PLATE'];
-        $_SESSION['colour'] = $row['COLOUR'];        
+        $_SESSION['colour'] = $row['COLOUR'];    
+        
+        $customer_id = $row['CUSTOMER_ID'];
+        
+        $AddressQuery = "SELECT * FROM address WHERE customer_id =  :customer_id";
+        $AddressStatement = oci_parse($connection, $AddressQuery);
+        oci_bind_by_name($AddressStatement, ':customer_id', $customer_id);
+        oci_execute($AddressStatement);
+
+        if ($data = oci_fetch_assoc($AddressStatement)){
+            $_SESSION['address'] = $data['ADDRESS'];
+            $_SESSION['resident_status'] = $data['RESIDENT_STATUS'];
+        } else {
+
+        }
+
         // Redirect to the home page or a dashboard
         header("Location: index.php");
         exit();
@@ -51,22 +68,49 @@ oci_close($connection);
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.min.css" />
+	<link href="style.css" rel="stylesheet">
+    <script src="js/script.js"></script>
 </head>
 <body>
-<?php include 'includes/header.php'; ?>
+<div class="container-fluid h-custom">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <h1>Login</h1> 
+    </div>
+    
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form action="" method="POST">
+            <div class="form-outline mb-4">
+                        <label class="form-label" for="email">Email:</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required><br>
 
-    <h2>Login</h2>
-    <form action="" method="POST">
-        <label for="username">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+            </div>
+            <div class="form-outline mb-4">
+                        <label class="form-label" for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control form-control-lg" required><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+            </div>
 
-        <input type="submit" value="Login">
-    </form>
+            <div class="text-center text-lg-start mt-4 pt-2">
+				<button type="submit" class="btn btn-primary btn-lg"
+				  style="padding-left: 2.5rem; padding-right: 2.5rem;">LOGIN</button>
+			  </div>
+              <br>
+              <br>
+              <br>
+        </form>
+    </div>
+        </div>
+</div>
     <?php include 'includes/footer.php'; ?>
 
 </body>
